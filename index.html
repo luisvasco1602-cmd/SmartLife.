@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartLife</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            min-height: 100vh;
+        }
+
+        /* Barra superior */
+        header {
+            background: #ffffff;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        /* Contenido principal */
+        main {
+            width: 90%;
+            max-width: 850px;
+            margin: 55px auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+            color: #111827;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            color: #6b7280;
+            font-size: 17px;
+            line-height: 1.6;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* Tarjeta principal */
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 130px;
+            padding: 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            resize: vertical;
+            font-size: 16px;
+            font-family: inherit;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        textarea:focus {
+            border-color: #2563eb;
+        }
+
+        .helper {
+            font-size: 13px;
+            color: #9ca3af;
+            margin-top: 8px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        /* Resultado */
+        #resultado {
+            display: none;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 15px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        #resultado h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .categoria {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        .resultado-seccion {
+            margin-bottom: 18px;
+        }
+
+        .resultado-seccion h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .resultado-seccion p {
+            line-height: 1.6;
+            color: #4b5563;
+        }
+
+        ol {
+            padding-left: 22px;
+            color: #4b5563;
+        }
+
+        ol li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .responsable {
+            background: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 14px;
+            border-radius: 8px;
+            line-height: 1.5;
+            color: #065f46;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 35px;
+            padding-bottom: 25px;
+            color: #9ca3af;
+            font-size: 13px;
+        }
+
+        /* Diseño adaptable */
+        @media (max-width: 600px) {
+
+            header {
+                padding: 18px 5%;
+            }
+
+            .tagline {
+                display: none;
+            }
+
+            main {
+                width: 92%;
+                margin-top: 35px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">SmartLife</div>
+        <div class="tagline">Organiza mejor. Decide conscientemente.</div>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <h1>Convierte tus metas en <span>acciones</span></h1>
+
+            <p>
+                Cuéntanos qué tarea, decisión o actividad necesitas organizar.
+                SmartLife te ayudará a convertirla en pasos más claros,
+                eficientes y responsables.
+            </p>
+        </section>
+
+        <section class="card">
+
+            <label for="situacion">
+                ¿Qué necesitas organizar?
+            </label>
+
+            <textarea
+                id="situacion"
+                placeholder="Ejemplo: Mañana tengo un examen y también debo terminar una presentación. No sé por cuál empezar."
+            ></textarea>
+
+            <p class="helper">
+                Describe brevemente tu tarea, decisión o actividad.
+            </p>
+
+            <button onclick="generarRecomendacion()">
+                Obtener recomendación
+            </button>
+
+            <div id="resultado">
+
+                <h2>Tu recomendación</h2>
+
+                <div id="categoria" class="categoria"></div>
+
+                <div class="resultado-seccion">
+                    <h3>Situación</h3>
+                    <p id="resumen"></p>
+                </div>
+
+                <div class="resultado-seccion">
+                    <h3>Plan recomendado</h3>
+
+                    <ol id="pasos"></ol>
+                </div>
+
+                <div class="resultado-seccion">
+                    <h3>Decisión responsable</h3>
+
+                    <div class="responsable" id="consejo"></div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer>
+            SmartLife — Tecnología para organizar tu vida sin dejar de lado tus decisiones.
+        </footer>
+
+    </main>
+
+    <script>
+
+        function generarRecomendacion() {
+
+            const campo = document.getElementById("situacion");
+            const textoOriginal = campo.value.trim();
+            const texto = textoOriginal.toLowerCase();
+
+            if (textoOriginal === "") {
+                alert("Escribe primero una tarea, decisión o actividad.");
+                campo.focus();
+                return;
+            }
+
+            let categoria = "";
+            let pasos = [];
+            let consejo = "";
+
+            /*
+                La aplicación identifica palabras clave para generar
+                recomendaciones diferentes dependiendo de la situación.
+            */
+
+            if (
+                texto.includes("examen") ||
+                texto.includes("estudiar") ||
+                texto.includes("tarea") ||
+                texto.includes("escuela") ||
+                texto.includes("proyecto")
+            ) {
+
+                categoria = "Estudio y tareas";
+
+                pasos = [
+                    "Identifica qué actividad tiene la fecha de entrega o examen más cercano.",
+                    "Divide el trabajo en partes pequeñas que puedas completar una por una.",
+                    "Empieza por la actividad más urgente o la que necesite mayor concentración.",
+                    "Define un periodo específico para trabajar y elimina distracciones durante ese tiempo.",
+                    "Al terminar, revisa tu avance y ajusta el plan si todavía tienes actividades pendientes."
+                ];
+
+                consejo =
+                    "Usa la tecnología como apoyo para organizarte, investigar o revisar información, pero procura comprender y realizar tú mismo las partes importantes de tu trabajo.";
+
+            }
+
+            else if (
+                texto.includes("comprar") ||
+                texto.includes("elegir") ||
+                texto.includes("decidir") ||
+                texto.includes("decisión") ||
+                texto.includes("conviene")
+            ) {
+
+                categoria = "Toma de decisiones";
+
+                pasos = [
+                    "Define claramente qué decisión necesitas tomar.",
+                    "Anota las opciones que tienes disponibles.",
+                    "Compara las ventajas, desventajas y posibles consecuencias de cada opción.",
+                    "Identifica cuál alternativa se relaciona mejor con tus necesidades y prioridades.",
+                    "Antes de decidir, revisa si existe información importante que todavía necesites conocer."
+                ];
+
+                consejo =
+                    "La recomendación puede ayudarte a ordenar tus opciones, pero la decisión final debe considerar tus valores, necesidades y consecuencias para ti y para otras personas.";
+
+            }
+
+            else if (
+                texto.includes("tiempo") ||
+                texto.includes("organizar") ||
+                texto.includes("pendiente") ||
+                texto.includes("mañana") ||
+                texto.includes("hoy")
+            ) {
+
+                categoria = "Organización del tiempo";
+
+                pasos = [
+                    "Haz una lista de todo lo que necesitas realizar.",
+                    "Separa las actividades entre urgentes, importantes y aquellas que pueden esperar.",
+                    "Elige una actividad principal para comenzar.",
+                    "Asigna un tiempo aproximado a cada actividad y agrega pequeños descansos.",
+                    "Revisa tu progreso al terminar cada actividad antes de continuar con la siguiente."
+                ];
+
+                consejo =
+                    "No necesitas llenar todo tu día de actividades. Una organización responsable también debe dejar espacio para descansar, convivir y atender necesidades personales.";
+
+            }
+
+            else {
+
+                categoria = "Organización general";
+
+                pasos = [
+                    "Define claramente qué quieres lograr.",
+                    "Identifica qué información, materiales o recursos necesitas.",
+                    "Divide la actividad en pasos pequeños y fáciles de seguir.",
+                    "Elige cuál de esos pasos deberías realizar primero.",
+                    "Revisa el resultado antes de considerar terminada la actividad."
+                ];
+
+                consejo =
+                    "Utiliza esta recomendación como una guía. Antes de realizar una acción importante, piensa en sus posibles consecuencias y decide si realmente se adapta a tu situación.";
+
+            }
+
+            document.getElementById("categoria").textContent = categoria;
+
+            document.getElementById("resumen").textContent =
+                "Quieres organizar: “" + textoOriginal + "”";
+
+            const lista = document.getElementById("pasos");
+
+            lista.innerHTML = "";
+
+            pasos.forEach(function(paso) {
+
+                const elemento = document.createElement("li");
+
+                elemento.textContent = paso;
+
+                lista.appendChild(elemento);
+
+            });
+
+            document.getElementById("consejo").textContent = consejo;
+
+            const resultado = document.getElementById("resultado");
+
+            resultado.style.display = "block";
+
+            resultado.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+        }
+
+        /*
+            Permite utilizar Ctrl + Enter o Command + Enter
+            para generar la recomendación.
+        */
+
+        document
+            .getElementById("situacion")
+            .addEventListener("keydown", function(event) {
+
+                if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+                    generarRecomendacion();
+                }
+
+            });
+
+    </script>
+
+</body>
+</html>
